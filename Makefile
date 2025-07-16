@@ -3,15 +3,16 @@ CFLAGS = -Wall -Wextra -O2 -I.
 PREFIX = /usr/local
 TARGET = eline
 
+
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
+
 all: $(TARGET)
 
-$(TARGET): eline.o main.o
+$(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-eline.o: eline.c eline.h
-	$(CC) $(CFLAGS) -c $<
-
-main.o: main.c eline.h
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
 install: $(TARGET)
