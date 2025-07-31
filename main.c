@@ -1,8 +1,9 @@
 #include "eline.h"
 #include <stdio.h>
 
+Line line;
+
 int main() {
-    Line line;
     line_init(&line);
 
     printf("ELines REPL (Press Ctrl-D to exit)\n");
